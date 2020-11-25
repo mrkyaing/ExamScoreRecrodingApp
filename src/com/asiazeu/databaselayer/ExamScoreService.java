@@ -31,7 +31,21 @@ public class ExamScoreService extends DBUtilitity implements IExamScoreDAO{
 
 	@Override
 	public void getAll() {
-		
+		try {
+			Connection con=this.getConnection();
+			String sql="SELECT student.name,student.email,examtype.name,score.mark,examtype.totalQuestions,examtype.examdate FROM score inner join student on score.studentid=student.id inner join examtype on score.examtypeid=examtype.id;";
+			Statement stmt=con.createStatement();
+			ResultSet rs=stmt.executeQuery(sql);
+			System.out.println(String.format("%-20s%-20s%-20s%-10s%-20s%-20s","Student Name","Email","Exam Type","Mark","Total Question","Exam Date"));
+		    while(rs.next()) {
+		    	System.out.println(String.format("%-20s%-20s%-20s%-10s%-20s%-20s",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)));	
+		    }
+		    rs.close();
+		    stmt.close();
+		    con.close();
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 

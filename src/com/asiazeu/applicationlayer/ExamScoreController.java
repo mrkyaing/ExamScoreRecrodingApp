@@ -17,4 +17,7 @@ public class ExamScoreController {
 		//(Application/Business logic  will be here)
 		dao.create(entity);
 	}
+	public void getAll() {
+		dao.getAll();
+	}
 }
