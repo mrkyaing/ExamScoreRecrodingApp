@@ -8,12 +8,14 @@ import java.util.Scanner;
 import com.asiazeu.applicationlayer.ExamTypeController;
 import com.asiazeu.entity.ExamTypeEntity;
 
-public class ExamTypeMenu  extends  CommunMenu{
+public class ExamTypeMenu  extends  CommonMenu{
 	
 public void start() {
 	try {
 		int choice =super.OperationsMenu();
-		if(choice==1) {
+		ExamTypeController examtypeController=new ExamTypeController();
+		switch(choice) {
+		case 1:{
 			Scanner sc=new Scanner(System.in);
 			System.out.print("Enter exam type :");
 			String type=sc.nextLine();
@@ -39,9 +41,14 @@ public void start() {
 			entity.setExamDate(examdate);
 			entity.setRemark(remark);
 			entity.setCreatedDate(new Date());
-			ExamTypeController examtypeController=new ExamTypeController();
+			
 			examtypeController.create(entity);
 		}
+		break;
+		case 2:{
+			examtypeController.getAll();
+		}break;
+		}//end of switch 
 	} catch (Exception e) {
 		e.printStackTrace();
 	}

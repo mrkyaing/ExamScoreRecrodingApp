@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.asiazeu.applicationlayer.StudentController;
 import com.asiazeu.entity.StudentEntity;
 
-public class StudentMenu extends  CommunMenu{
+public class StudentMenu extends  CommonMenu{
 	
 	public void start() {
 		try {
@@ -41,7 +41,9 @@ public class StudentMenu extends  CommunMenu{
 				stController.create(entity);//method calling StudentController 's create();
 			}//end of if 1
 			else if(choice==2) {
+			    System.out.println("All Student Information ");
 				stController.getAll();
+				System.out.println("================================");
 			}
 			else if(choice==3) {
 				//showing all data .

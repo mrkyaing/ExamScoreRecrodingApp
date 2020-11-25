@@ -1,8 +1,10 @@
 package com.asiazeu.entity;
 import java.util.Date;
 public class StudentEntity extends CommonEntity{
+	
 private String name,email,gender,phone,address;
 private Date dob;
+
 public String getName() {
 	return name;
 }

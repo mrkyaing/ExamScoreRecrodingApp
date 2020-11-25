@@ -1,9 +1,7 @@
 package com.asiazeu.databaselayer;
 import java.sql.*;
 import com.asiazeu.entity.StudentEntity;
-public class StudentService extends DBUtilitity implements IStudentDAO{
-   
-    
+public class StudentService extends DBUtilitity implements IStudentDAO{   
 	@Override
 	public void create(StudentEntity entity) {
 		String sql="insert into student(name,email,phone,address,gender,dob,createddate) values(?,?,?,?,?,?,?)";
@@ -35,8 +33,7 @@ public class StudentService extends DBUtilitity implements IStudentDAO{
 			ResultSet rs=stmt.executeQuery(sql);
 			System.out.println(String.format("%-5s%-10s%-15s%-20s%-10s%-25s%-25s%s","id","name","email","phone","address","gender","DOB",
 					"createdDate"));
-			while(rs.next()) {
-				
+			while(rs.next()) {				
 				System.out.println(String.format("%-5s%-10s%-15s%-20s%-10s%-25s%-25s%s",
 						rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
 						rs.getString(5),rs.getString(6),rs.getString(7),

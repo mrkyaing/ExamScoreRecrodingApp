@@ -9,11 +9,12 @@ public class ExamScoreController {
 	IExamScoreDAO dao=null;
 	
 	public ExamScoreController() {
+		//has-A relationship
 		dao=new ExamScoreService();//composition  relationship
 	}
 	//association relationship
 	public void create(ExamScoreEntity entity) {
-		//PVP,IRR,
+		//(Application/Business logic  will be here)
 		dao.create(entity);
 	}
 }

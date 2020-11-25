@@ -19,7 +19,7 @@ public class ExamScoreService extends DBUtilitity implements IExamScoreDAO{
 			pstmt.setObject(5, entity.getCreatedDate());
 			int insertedrows=pstmt.executeUpdate();
 			if(insertedrows>0) {
-				System.out.println("insert sucess !!");
+				System.out.println("Score insert successfully!!");
 			}
 			pstmt.close();
 			con.close();
@@ -31,19 +31,19 @@ public class ExamScoreService extends DBUtilitity implements IExamScoreDAO{
 
 	@Override
 	public void getAll() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void update(int id, ExamScoreEntity entity) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

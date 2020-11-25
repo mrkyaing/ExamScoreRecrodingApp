@@ -1,17 +1,12 @@
 package com.asiazeu.databaselayer;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.asiazeu.entity.ExamTypeEntity;
-
-public class ExamTypeService extends DBUtilitity implements IExamTypeDAO{
-	
-	
+public class ExamTypeService extends DBUtilitity implements IExamTypeDAO{	
 	@Override
 	public void create(ExamTypeEntity entity) {
 		String sql="insert into examtype(type,name,duration,examdate,createddate,totalquestions,remark) values(?,?,?,?,?,?,?)";
@@ -34,7 +29,6 @@ public class ExamTypeService extends DBUtilitity implements IExamTypeDAO{
 		}	
 		
 	}
-
 	@Override
 	public void getAll() {
 		String sql="select * from examtype";
@@ -42,9 +36,9 @@ public class ExamTypeService extends DBUtilitity implements IExamTypeDAO{
 		try {
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(sql);
-			System.out.println(String.format("%-5s%-10s%-15s%-20s%-10s%-25s%-25s%s","id","type","name","duration","examdate","createddate","totalquestions","remark"));
+			System.out.println(String.format("%-5s%-20s%-25s%-20s%-20s%-25s%-25s%s","id","type","name","duration(In Minutes)","examdate","createddate","totalquestions","remark"));
 			while(rs.next()) {			
-				System.out.println(String.format("%-5s%-10s%-15s%-20s%-10s%-25s%-25s%s",rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)));
+				System.out.println(String.format("%-5s%-20s%-25s%-20s%-20s%-25s%-25s%s",rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)));
 			}
 			rs.close();
 			stmt.close();

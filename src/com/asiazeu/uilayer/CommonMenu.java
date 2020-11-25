@@ -2,7 +2,7 @@ package com.asiazeu.uilayer;
 
 import java.util.Scanner;
 
-public class CommunMenu {
+public class CommonMenu {
 	
 	public  String confirmDialog() {
 		String reply="n";

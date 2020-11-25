@@ -10,16 +10,19 @@ public class ExamScoreMainDemo {
 		}else if(choice==2) {
 			ExamTypeMenu examTypemenu=new ExamTypeMenu();
 			examTypemenu.start();
-		}else if(choice==4) {
+		}else if(choice==3) {
+			ExamScoreMenu examScoreMenu=new ExamScoreMenu();
+			examScoreMenu.start();
+		}
+		else if(choice==4) {
 			System.out.println("Good bye !!");
 			System.exit(0);
-		}
-	
+		}	
 	}
 
 	private static int mainMenu() {
 		System.out.println("Welcome to exam recrod system!!!");
-		System.out.print("1)Student functions,2)Exam type Functions,Score Functions,4)Exist:");
+		System.out.print("1)Student functions\n2)Exam type Functions\n3)Score Functions\n4)Exists:");
 		Scanner sc=new Scanner(System.in);
 		int choice=sc.nextInt();
 		return choice;	

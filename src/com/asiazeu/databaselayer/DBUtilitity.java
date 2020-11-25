@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class DBUtilitity {
+	
 	String url="jdbc:mysql://localhost:3306/examrecroddb";
     String user="root";
     String password="root@123";
@@ -17,7 +18,7 @@ public abstract class DBUtilitity {
 			e.printStackTrace();
 		}
     }
-
+    //getConnection with retun of Connection 
     public Connection getConnection() {
     	Connection con=null;
     	try {
