@@ -20,4 +20,7 @@ public class ExamScoreController {
 	public void getAll() {
 		dao.getAll();
 	}
+	public void delete(int id) {
+		dao.delete(id);
+	}
 }

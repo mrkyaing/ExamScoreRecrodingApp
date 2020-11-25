@@ -33,12 +33,12 @@ public class ExamScoreService extends DBUtilitity implements IExamScoreDAO{
 	public void getAll() {
 		try {
 			Connection con=this.getConnection();
-			String sql="SELECT student.name,student.email,examtype.name,score.mark,examtype.totalQuestions,examtype.examdate FROM score inner join student on score.studentid=student.id inner join examtype on score.examtypeid=examtype.id;";
+			String sql="SELECT student.id,student.name,student.email,examtype.name,score.mark,examtype.totalQuestions,examtype.examdate FROM score inner join student on score.studentid=student.id inner join examtype on score.examtypeid=examtype.id;";
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(sql);
-			System.out.println(String.format("%-20s%-20s%-20s%-10s%-20s%-20s","Student Name","Email","Exam Type","Mark","Total Question","Exam Date"));
+			System.out.println(String.format("%-20s%-20s%-20s%-10s%-20s%-20s%-10s","Student Id","Student Name","Email","Exam Type","Mark","Total Question","Exam Date"));
 		    while(rs.next()) {
-		    	System.out.println(String.format("%-20s%-20s%-20s%-10s%-20s%-20s",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)));	
+		    	System.out.println(String.format("%-20s%-20s%-20s%-10s%-20s%-20s%-10s",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)));	
 		    }
 		    rs.close();
 		    stmt.close();
@@ -57,7 +57,20 @@ public class ExamScoreService extends DBUtilitity implements IExamScoreDAO{
 
 	@Override
 	public void delete(int id) {
-		
+		try {
+			Connection con=this.getConnection();			
+			String sql="delete from score where studentid=?";
+			PreparedStatement pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			int deletereocrd=pstmt.executeUpdate();
+			if(deletereocrd>0) {
+				System.out.println("delete success with student id "+id);
+			}
+			pstmt.close();
+			con.close();
+		}catch(Exception e) {
+			System.out.println("Error:"+e.getMessage());
+		}
 		
 	}
 

@@ -9,6 +9,7 @@ import com.asiazeu.applicationlayer.StudentController;
 import com.asiazeu.entity.ExamScoreEntity;
 import com.asiazeu.entity.ExamTypeEntity;
 import com.asiazeu.entity.StudentEntity;
+import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
 
 public class ExamScoreMenu extends CommonMenu{
 public void start() {
@@ -52,10 +53,22 @@ public void start() {
 	    	examScoreEntity.setCreatedDate(new Date());
 	    	examscorecontroller.create(examScoreEntity);
 	    	
-	    } break;
+	    	} break;
 	    case 2: examscorecontroller.getAll();break;
 	    case 3: break;
-	    case 4: break;
+	    case 4: {
+	    		examscorecontroller.getAll(); 
+	    		System.out.print("Enter Student id to delete:");
+	    		Scanner sc=new Scanner(System.in);
+	    		int id=sc.nextInt();
+	    		String reply=super.confirmDialog();
+	    		if(reply.equals("y")) {
+	    			examscorecontroller.delete(id);
+	    		}else {
+	    			System.out.println("you have been cancelled.");
+	    		}	    		
+	    		}
+	    		break;
 	    }//end of switch  
 	}catch(Exception e) {
 		
